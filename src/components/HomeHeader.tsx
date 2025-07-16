@@ -84,11 +84,11 @@ const HomeHeader: React.FC<Props> = ({ nombre, sexo, onLogout }) => {
 
 const styles = StyleSheet.create({
   header: {
-    height: verticalScale(92),
+    height: verticalScale(80),
     paddingTop:
-      Platform.OS === "android" ? verticalScale(50) : verticalScale(55),
-    paddingHorizontal: scale(28),
-    paddingBottom: verticalScale(12),
+      Platform.OS === "android" ? verticalScale(20) : verticalScale(25),
+    paddingHorizontal: scale(20),
+    // paddingBottom: verticalScale(12),
     justifyContent: "center",
     backgroundColor: "transparent",
   },

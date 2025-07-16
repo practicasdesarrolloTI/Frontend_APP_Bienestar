@@ -76,7 +76,6 @@ const AppointmentScreen: React.FC<Props> = ({ navigation }) => {
           procedimiento_especifico: item.procedimiento_especifico || "",
         }));
         setCitas(citasFormateadas);
-
       } catch (error) {
       } finally {
         setLoading(false);
@@ -179,16 +178,23 @@ const AppointmentScreen: React.FC<Props> = ({ navigation }) => {
                           <Text style={styles.label}>Hora: </Text>
                           {item.hora}
                         </Text>
-                        {item.especialidad && item.medico && (<><Text style={styles.text}>
-                          <Text style={styles.label}>Especialidad: </Text>
-                          {capitalizeSentence(item.especialidad)}
-                        </Text><Text style={styles.text}>
-                            <Text style={styles.label}>Médico: </Text>
-                            {capitalizeName(item.medico)}
-                          </Text></>)}
+                        {item.especialidad && item.medico && (
+                          <>
+                            <Text style={styles.text}>
+                              <Text style={styles.label}>Especialidad: </Text>
+                              {capitalizeSentence(item.especialidad)}
+                            </Text>
+                            <Text style={styles.text}>
+                              <Text style={styles.label}>Médico: </Text>
+                              {capitalizeName(item.medico)}
+                            </Text>
+                          </>
+                        )}
                         {item.grupo && (
                           <Text style={styles.text}>
-                            <Text style={styles.label}>Tipo de procedimiento: </Text>
+                            <Text style={styles.label}>
+                              Tipo de procedimiento:{" "}
+                            </Text>
                             {capitalizeSentence(item.grupo)}
                           </Text>
                         )}
@@ -198,7 +204,6 @@ const AppointmentScreen: React.FC<Props> = ({ navigation }) => {
                             {capitalizeSentence(item.procedimiento_especifico)}
                           </Text>
                         )}
-                       
                       </View>
                     </View>
                     <View style={styles.iconWrapper}>
@@ -276,7 +281,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.title,
   },
   dateMonth: {
-    fontSize: verticalScale(14),
+    fontSize: verticalScale(12),
     color: colors.white,
     fontFamily: fonts.subtitle,
     textTransform: "capitalize",
@@ -297,7 +302,7 @@ const styles = StyleSheet.create({
   },
   iconWrapper: {
     position: "absolute",
-    left: LEFT_COLUMN_WIDTH - (ICON_SIZE / 2),
+    left: LEFT_COLUMN_WIDTH - ICON_SIZE / 2,
     top: CARD_CONTENT_HEIGHT / 2 - ICON_SIZE / 2,
     width: moderateScale(34),
     height: moderateScale(34),

@@ -287,7 +287,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.title,
   },
   dateMonth: {
-    fontSize: verticalScale(14),
+    fontSize: verticalScale(12),
     color: colors.white,
     fontFamily: fonts.subtitle,
     textTransform: "capitalize",
