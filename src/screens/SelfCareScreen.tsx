@@ -9,7 +9,6 @@ import {
   Platform,
   ImageBackground,
 } from "react-native";
-import { useIsFocused } from "@react-navigation/native";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../navigation/AppNavigator";
@@ -134,15 +133,7 @@ const SelfCareScreen: React.FC = () => {
     },
   ]);
 
-  const isFocused = useIsFocused();
   const [modalVisible, setModalVisible] = useState(false);
-
-  useEffect(() => {
-    if (!isFocused) {
-      setModalVisible(false);
-    }
-  }, [isFocused]);
-
   /** Función para cerrar sesión */
   const handleLogout = async () => {
     await AsyncStorage.removeItem("token");

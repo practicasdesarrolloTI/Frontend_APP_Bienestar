@@ -10,7 +10,6 @@ import {
   ImageBackground,
   Image,
 } from "react-native";
-import { useIsFocused } from "@react-navigation/native";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import colors from "../themes/colors";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -42,15 +41,8 @@ type Cita = {
 const AppointmentScreen: React.FC<Props> = ({ navigation }) => {
   const [citas, setCitas] = useState<Cita[]>([]);
   const [loading, setLoading] = useState(true);
-  const isFocused = useIsFocused();
   const [modalVisible, setModalVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-
-  useEffect(() => {
-    if (!isFocused) {
-      setModalVisible(false);
-    }
-  }, [isFocused]);
 
   /** Función para cerrar sesión */
   const handleLogout = async () => {
@@ -206,7 +198,7 @@ const AppointmentScreen: React.FC<Props> = ({ navigation }) => {
                             {capitalizeSentence(item.procedimiento_especifico)}
                           </Text>
                         )}
-
+                       
                       </View>
                     </View>
                     <View style={styles.iconWrapper}>

@@ -16,7 +16,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/AppNavigator";
 import { getPatientByDocument } from "../services/patientService";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useFocusEffect, useIsFocused } from "@react-navigation/native";
+import { useFocusEffect } from "@react-navigation/native";
 import LoadingScreen from "../components/LoadingScreen";
 import Toast from "react-native-toast-message";
 import HomeHeader from "../components/HomeHeader";
@@ -69,15 +69,8 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
   const [nombrePaciente, setNombrePaciente] = useState<string | null>(null);
   const [sexo, setSexo] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-  const isFocused = useIsFocused();
   const [modalVisible, setModalVisible] = useState(false);
   const [hasError, setHasError] = useState(false);
-
-  useEffect(() => {
-    if (!isFocused) {
-      setModalVisible(false);
-    }
-  }, [isFocused]);
 
   const handleLogout = async () => {
     await AsyncStorage.removeItem("token");
@@ -180,7 +173,7 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
           </ScrollView>
           <LogOutModal
             text="¿Estás seguro de que deseas cerrar sesión?"
-            visible={modalVisible && isFocused}
+            visible={modalVisible}
             onCancel={() => setModalVisible(false)}
             onConfirm={handleLogout}
           />

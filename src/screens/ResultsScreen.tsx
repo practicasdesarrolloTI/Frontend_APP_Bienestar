@@ -13,7 +13,6 @@ import {
   Dimensions,
   Image,
 } from "react-native";
-import { useIsFocused } from "@react-navigation/native";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import colors from "../themes/colors";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -44,17 +43,10 @@ const ResultsScreen: React.FC<Props> = ({ navigation }) => {
     []
   );
   const [loading, setLoading] = useState(true);
-  const isFocused = useIsFocused();
   const [modalVisible, setModalVisible] = useState(false);
   const noHayResultados =
     resultados.length === 0 || resultadosFiltrados.length === 0;
   const [searchQuery, setSearchQuery] = useState("");
-
-  useEffect(() => {
-    if (!isFocused) {
-      setModalVisible(false);
-    }
-  }, [isFocused]);
 
   /** Función para cerrar sesión */
   const handleLogout = async () => {

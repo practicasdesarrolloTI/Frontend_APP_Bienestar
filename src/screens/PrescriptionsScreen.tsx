@@ -10,7 +10,6 @@ import {
   ImageBackground,
   Image,
 } from "react-native";
-import { useIsFocused } from "@react-navigation/native";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import colors from "../themes/colors";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -41,18 +40,11 @@ type Medicamento = {
 const MedicamentScreen: React.FC<Props> = ({ navigation }) => {
   const [medicamentos, setMedicamentos] = useState<Medicamento[]>([]);
   const [loading, setLoading] = useState(true);
-  const isFocused = useIsFocused();
   const [modalVisible, setModalVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredMedicamentos, setFilteredMedicamentos] = useState<
     Medicamento[]
   >([]);
-
-  useEffect(() => {
-    if (!isFocused) {
-      setModalVisible(false);
-    }
-  }, [isFocused]);
 
   /** Función para cerrar sesión */
   const handleLogout = async () => {
@@ -217,15 +209,15 @@ const MedicamentScreen: React.FC<Props> = ({ navigation }) => {
                           item.dias_tratamiento !== 0 && (
                             <Text style={styles.text}>
                               <Text style={styles.label}>Días de tratamiento: </Text>
-                              {item.dias_tratamiento}
+                              {item.dias_tratamiento} 
                             </Text>
                           )}
-                        {item.indicaciones && item.indicaciones !== "" && (
-                          <Text style={styles.text}>
-                            <Text style={styles.label}>Indicaciones: </Text>
-                            {capitalizeSentence(item.indicaciones)}
-                          </Text>
-                        )}
+                          {item.indicaciones && item.indicaciones !== "" && (
+                            <Text style={styles.text}>
+                              <Text style={styles.label}>Indicaciones: </Text>
+                              {capitalizeSentence(item.indicaciones)}
+                            </Text>
+                          )}
                       </View>
                     </View>
                     <View style={styles.iconWrapper}>
