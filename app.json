@@ -19,8 +19,7 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/logos/LogoAppIcono.png"
       },
-      "package": "com.practicasdesarrolloti.bienestarapp",
-      "usesCleartextTraffic": true
+      "package": "com.practicasdesarrolloti.bienestarapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
