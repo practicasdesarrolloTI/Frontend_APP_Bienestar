@@ -193,7 +193,7 @@ const ResetPasswordScreen = ({ route, navigation }: Props) => {
                   { opacity: !passwordValid && password.length > 0 ? 1 : 0 },
                 ]}
               >
-                La contraseña debe tener entre 4 y 12 caracteres, una mayúscula,
+                La contraseña debe tener entre 8 y 12 caracteres, una mayúscula,
                 una minúscula y un número.
               </Text>
             </View>
