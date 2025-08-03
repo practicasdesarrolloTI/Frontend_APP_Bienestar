@@ -95,6 +95,25 @@ const RegisterScreen: React.FC<Props> = ({ navigation }) => {
     const EPS = paciente?.eps || null;
     const sexoPaciente = paciente?.sexo || null;
 
+    console.log("Paciente:", paciente);
+    console.log("Datos del paciente:", {
+      docPaciente,
+      docType,
+      fechaNaci,
+      EPS,
+      sexoPaciente,
+    });
+
+    console.log("Datos ingresados:", {
+      documentType,
+      documentNumber,
+      email,
+      confirmEmail,
+      selectedEps,
+      birthDate,
+      selectedSex,
+    });
+
     if (!documentType) {
       Toast.show({
         type: "error",
@@ -144,7 +163,36 @@ const RegisterScreen: React.FC<Props> = ({ navigation }) => {
       });
       return;
     }
-    if (!acceptedTerms) {
+
+    if (!selectedEps) {
+      Toast.show({
+        type: "error",
+        text1: "Error",
+        text2: "Ingrese el nombre de su EPS.",
+      });
+      return;
+    }
+
+    if (!birthDate) {
+      Toast.show({
+        type: "error",
+        text1: "Error",
+        text2: "Ingrese su fecha de nacimiento.",
+      });
+      return;
+    }
+
+    
+    if (!selectedSex) {
+      Toast.show({
+        type: "error",
+        text1: "Error",
+        text2: "Seleccione su sexo.",
+      });
+      return;
+    }
+
+     if (!acceptedTerms) {
       Toast.show({
         type: "error",
         text1: "Términos no aceptados",
@@ -163,11 +211,12 @@ const RegisterScreen: React.FC<Props> = ({ navigation }) => {
       return;
     }
 
-    if (!birthDate) {
+    if (selectedEps !== EPS) {
       Toast.show({
         type: "error",
         text1: "Error",
-        text2: "Ingrese su fecha de nacimiento.",
+        text2:
+          "No se encontró el paciente con la información dada. Verifica los datos.",
       });
       return;
     }
@@ -187,34 +236,6 @@ const RegisterScreen: React.FC<Props> = ({ navigation }) => {
         text1: "Error",
         text2:
           "No se encontró el paciente con la información dada. Verifica los datos.",
-      });
-      return;
-    }
-
-    if (!selectedEps) {
-      Toast.show({
-        type: "error",
-        text1: "Error",
-        text2: "Ingrese el nombre de su EPS.",
-      });
-      return;
-    }
-
-    if (selectedEps !== EPS) {
-      Toast.show({
-        type: "error",
-        text1: "Error",
-        text2:
-          "No se encontró el paciente con la información dada. Verifica los datos.",
-      });
-      return;
-    }
-
-    if (!selectedSex) {
-      Toast.show({
-        type: "error",
-        text1: "Error",
-        text2: "Seleccione su sexo.",
       });
       return;
     }
