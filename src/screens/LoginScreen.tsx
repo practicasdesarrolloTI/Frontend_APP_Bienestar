@@ -66,6 +66,14 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
       });
       return;
     }
+    if (!/^\d+$/.test(document)) {
+          Toast.show({
+            type: "error",
+            text1: "Error",
+            text2: "El número de documento debe ser numérico.",
+          });
+          return;
+        }
     if (!acceptedTerms) {
       Toast.show({
         type: "error",

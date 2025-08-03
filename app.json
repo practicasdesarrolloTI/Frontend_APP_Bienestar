@@ -2,7 +2,7 @@
   "expo": {
     "name": "CuidarMe",
     "slug": "CuidarMe",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/logos/LogoAppIcono.png",
     "userInterfaceStyle": "light",
@@ -16,7 +16,7 @@
       "supportsTablet": true
     },
     "android": {
-      "versionCode": 3,      
+      "versionCode": 4,      
       "adaptiveIcon": {
         "foregroundImage": "./assets/splashappcuidarme.png"
       },
