@@ -52,16 +52,7 @@ const ForgotPasswordScreen = ({
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSendCode = async () => {
-    const paciente = await checkPatient(
-      documentType as DocumentType,
-      Number(document)
-    );
-    const docPaciente = paciente?.document || null;
-    const docType = paciente?.documentType || null;
-    const correoPaciente = paciente?.mail;
-
-    console.log("paciente", paciente);
+  const handleSendCode = async () => {    
 
     if (documentType === null) {
       Toast.show({
@@ -80,7 +71,7 @@ const ForgotPasswordScreen = ({
       });
       return;
     }
-    if (!/^\d+$/.test(String(docPaciente ?? ""))) {
+    if (!/^\d+$/.test(document)) {
       Toast.show({
         type: "error",
         text1: "Error",
@@ -88,7 +79,18 @@ const ForgotPasswordScreen = ({
       });
       return;
     }
-    if (documentType !== docType) {
+
+    const paciente = await checkPatient(
+      documentType as DocumentType,
+      Number(document)
+    );
+    const docPaciente = paciente?.document || null;
+    const docType = paciente?.documentType || null;
+    const correoPaciente = paciente?.mail;
+
+    console.log("paciente", paciente);
+
+     if (documentType !== docType) {
       Toast.show({
         type: "error",
         text1: "Error",

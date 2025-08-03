@@ -2,13 +2,13 @@
   "expo": {
     "name": "CuidarMe",
     "slug": "CuidarMe",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/logos/LogoAppIcono.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/logos/LogoAppIcono.jpg",
+      "image": "./assets/splashappcuidarme.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -16,8 +16,9 @@
       "supportsTablet": true
     },
     "android": {
+      "versionCode": 3,      
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logos/LogoAppIcono.png"
+        "foregroundImage": "./assets/splashappcuidarme.png"
       },
       "package": "com.practicasdesarrolloti.bienestarapp"
     },
